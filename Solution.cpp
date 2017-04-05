@@ -124,3 +124,113 @@ int Solution::minNumberInRotateArray(vector<int> rotateArray) {
     }
     return rotateArray[middle];
 }
+
+int Solution::Fibonacci(int n) {
+    int i = 0, j = 1;
+    while (n--) {
+        j += i;//f(n+1);
+        i = j - i;//f(n);
+    }
+    return i;
+}
+
+int Solution::jumpFloor(int number) {
+    int i = 1, j = 2;
+    while (number-- > 1) {
+        j += i;
+        i = j - i;
+    }
+    return i;
+}
+
+int Solution::jumpFloorII(int number) {
+    return 1<<--number;
+}
+
+int Solution::rectCover(int number) {
+    int i = 1, j = 2;
+    while (number-- > 1) {
+        j += i;
+        i = j - i;
+    }
+    return i;
+}
+
+int Solution::NumberOf1(int n) {
+    int count = 0;
+    while (n) {
+        count++;
+        n = n & (n - 1);
+    }
+    return count;
+}
+
+double Solution::Power(double base, int exponent) {
+    if (base == 0) return 0;
+
+    int n;
+    double result = 1.0, temp = base;
+
+    if (exponent > 0)
+        n = exponent;
+    else if (exponent < 0)
+        n = -exponent;
+    else
+        return 1;
+
+    while (n) {
+        if (n & 1 == 1)
+            result *= temp;
+        temp *= temp;
+        n >>= 1;
+    }
+
+    return exponent > 0 ? result : 1 / result;
+}
+
+void Solution::reOrderArrayI(vector<int> &array) {
+    if (array.empty()) return;
+
+    vector<int> v;
+    for (int i = 0; i < array.size(); ++i) {
+        if (array[i] % 2 != 0)
+            v.push_back(array[i]);
+    }
+    for (int j = 0; j < array.size(); ++j) {
+        if (array[j] % 2 == 0)
+            v.push_back(array[j]);
+    }
+
+    array = v;
+}
+
+void Solution::reOrderArrayII(vector<int> &array) {
+    if (array.empty()) return;
+
+    int a = 0, temp, k;
+
+    while (array[a] % 2 != 0)//找到第一个偶数的位置
+        ++a;
+
+    for (int i = a + 1; i < array.size(); ++i) {
+        if (array[i] % 2 != 0) {
+            temp = array[i];
+            k = i - 1;
+            while (k >= a) {
+                array[k + 1] = array[k];
+                --k;
+            }
+            array[a++] = temp;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+

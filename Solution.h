@@ -49,6 +49,28 @@ public:
     //6.旋转数组的最小数字
     int minNumberInRotateArray(vector<int> rotateArray);
 
+    //7.斐波那契数列的第n项（迭代法）
+    int Fibonacci(int n);
+
+    //8.跳台阶
+    int jumpFloor(int number);
+
+    //9.变态跳台阶
+    int jumpFloorII(int number);
+
+    //10.矩形覆盖
+    int rectCover(int number);
+
+    //11.二进制中1的个数
+    int  NumberOf1(int n);
+
+    //12.数值的整数次幂(快速幂)
+    double Power(double base, int exponent);
+
+    //13.调整数组顺序使奇数位于偶数前面
+    void reOrderArrayI(vector<int> &array);
+    void reOrderArrayII(vector<int> &array);
+
 private:
     stack<int> stack1;
     stack<int> stack2;
