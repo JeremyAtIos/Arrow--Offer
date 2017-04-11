@@ -71,6 +71,14 @@ public:
     void reOrderArrayI(vector<int> &array);
     void reOrderArrayII(vector<int> &array);
 
+    //14.链表中倒数第k个节点
+    ListNode *FindKthToTail(ListNode *pListHead, unsigned int k);
+
+    //15.反转链表
+    ListNode* ReverseList(ListNode* pHead);
+
+    //16.合并两个排序的链表
+    ListNode* MergeList(ListNode* pHead1, ListNode* pHead2);
 private:
     stack<int> stack1;
     stack<int> stack2;
