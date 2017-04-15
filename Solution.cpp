@@ -297,7 +297,64 @@ ListNode *Solution::MergeList(ListNode* pHead1, ListNode* pHead2)
     return head;
 }
 
+bool Solution::HasSubtree(TreeNode *pRoot1, TreeNode *pRoot2) {
+    if (pRoot1 == NULL || pRoot2 == NULL) return false;
+    return IsSubtree(pRoot1, pRoot2)
+           || HasSubtree(pRoot1->left, pRoot2)
+           || HasSubtree(pRoot1->right, pRoot2);
+}
 
+bool Solution::IsSubtree(TreeNode *p1, TreeNode *p2) {
+    if (p2 == NULL) return true;
+    if (p1 == NULL) return false;
+
+    if (p1->val == p2->val)
+        return IsSubtree(p1->left, p2->left)
+               && IsSubtree(p1->right, p2->right);
+    else
+        return false;
+}
+
+void Solution::Mirror(TreeNode *pRoot) {
+    if (pRoot == NULL) return;
+    if (pRoot->left == NULL && pRoot->right == NULL) return;
+
+    TreeNode *temp;
+    temp = pRoot->left;
+    pRoot->left = pRoot->right;
+    pRoot->right = temp;
+
+    Mirror(pRoot->left);
+    Mirror(pRoot->right);
+}
+
+vector<int> Solution::printMatrix(vector<vector<int> > matrix) {
+    vector<int> v;
+    if (matrix.empty()) return v;
+
+    int row = matrix.size() - 1;
+    int col = matrix[0].size() - 1;
+    int circles = row < col ? row / 2 + 1 : col / 2 + 1;
+    for (int i = 0; i < circles; ++i) {
+        for (int j = i; j <= col; ++j) {
+            v.push_back(matrix[i][j]);
+        }
+        for (int k = i + 1; k <= row; ++k) {
+            v.push_back(matrix[k][col]);
+        }
+        for (int l = col - 1; l > i && (row - i > 0); --l) {
+            v.push_back(matrix[row][l]);
+        }
+        for (int m = row; m > i && (col - i > 0); --m) {
+            v.push_back(matrix[m][i]);
+        }
+
+        row--;
+        col--;
+    }
+
+    return v;
+}
 
 
 

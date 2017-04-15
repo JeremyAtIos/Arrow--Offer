@@ -79,6 +79,17 @@ public:
 
     //16.合并两个排序的链表
     ListNode* MergeList(ListNode* pHead1, ListNode* pHead2);
+
+    //17.树的子结构
+    bool HasSubtree(TreeNode* pRoot1, TreeNode* pRoot2);
+    bool IsSubtree(TreeNode *p1, TreeNode *p2);
+
+    //18.二叉树的镜像
+    void Mirror(TreeNode *pRoot);
+
+    //19.顺时针打印矩阵
+    vector<int> printMatrix(vector<vector<int> > matrix);
+
 private:
     stack<int> stack1;
     stack<int> stack2;

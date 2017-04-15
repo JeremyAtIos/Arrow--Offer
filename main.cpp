@@ -41,24 +41,10 @@ int main()
 {
     Solution s;
 
-    ListNode *node1 = new ListNode(1);
-    ListNode *node2 = new ListNode(2);
-    ListNode *node3 = new ListNode(3);
-    node1->next = node2;
-    node2->next = node3;
-    node3->next = NULL;
-
-    ListNode *node4 = new ListNode(3);
-    ListNode *node5 = new ListNode(5);
-    ListNode *node6 = new ListNode(7);
-    node4->next = node5;
-    node5->next = node6;
-    node6->next = NULL;
-
-    ListNode *result = s.MergeList(node1, node4);
-    while (result) {
-        cout<<result->val<<endl;
-        result = result->next;
+    vector<vector<int> > v = { {1, 2, 3, 4, 5} };
+    vector<int> result = s.printMatrix(v);
+    for (int i = 0; i < result.size(); ++i) {
+        cout<<result[i]<<endl;
     }
 
     return 0;
