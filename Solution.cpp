@@ -3,7 +3,6 @@
 //
 
 #include "Solution.h"
-#include <stack>
 
 bool Solution::Find(int target, vector<vector<int> > array) {
     if (array.empty()) return false;
@@ -356,8 +355,53 @@ vector<int> Solution::printMatrix(vector<vector<int> > matrix) {
     return v;
 }
 
+void Solution::min_push(int value)
+{
+    val_stack.push(value);
+    if (min_stack.empty()) {
+        min_stack.push(value);
+    } else {
+        int min = min_stack.top();
+        if (value < min)
+            min_stack.push(value);
+        else
+            min_stack.push(min);
+    }
+}
 
+void Solution::min_pop()
+{
+    if (val_stack.empty()) {
+        return;
+    } else {
+        val_stack.pop();
+        min_stack.pop();
+    }
+}
 
+int Solution::min_top()
+{
+    return val_stack.top();
+}
+
+int Solution::min_min() {
+    return min_stack.top();
+}
+
+bool Solution::IsPopOrder(vector<int> pushV, vector<int> popV) {
+    if (pushV.empty()) return false;
+
+    vector<int> stack;
+    for (int i = 0, j = 0; i < pushV.size(); ++i) {
+        stack.push_back(pushV[i]);
+        while (j < popV.size() && stack.back() == popV[j]) {
+            stack.pop_back();
+            ++j;
+        }
+    }
+
+    return stack.empty();
+}
 
 
 

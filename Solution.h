@@ -90,9 +90,20 @@ public:
     //19.顺时针打印矩阵
     vector<int> printMatrix(vector<vector<int> > matrix);
 
+    //20.包含min函数的栈
+    void min_push(int value);
+    void min_pop();
+    int min_top();
+    int min_min();
+
+    //21.栈的压入、弹出序列
+    bool IsPopOrder(vector<int> pushV,vector<int> popV);
+
 private:
     stack<int> stack1;
     stack<int> stack2;
+    stack<int> val_stack;
+    stack<int> min_stack;
 };
 
 

@@ -39,13 +39,10 @@ void suiXianHuaFunc(int m, int n)
 
 int main()
 {
-    Solution s;
+    int a = 2;
+    int b = ++a + a++;
+    printf("%d %d", b, a);
 
-    vector<vector<int> > v = { {1, 2, 3, 4, 5} };
-    vector<int> result = s.printMatrix(v);
-    for (int i = 0; i < result.size(); ++i) {
-        cout<<result[i]<<endl;
-    }
 
     return 0;
 }
